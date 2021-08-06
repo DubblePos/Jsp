@@ -79,7 +79,7 @@
 			<td><%= ub.getAge() %></td>
 			<td>
 				<a href="#">수정</a>
-				<a href="#">삭제</a>
+				<a href="./4_3_Delete.jsp?uid=<%=ub.getUid()%>">삭제</a>
 			</td>
 		</tr>
 		<%
