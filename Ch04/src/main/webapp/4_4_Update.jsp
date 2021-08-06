@@ -67,15 +67,15 @@
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name"value="<%= ub.getName()%>"/></td>
+				<td><input type="text" name="name" value="<%= ub.getName()%>"/></td>
 			</tr>
 			<tr>
 				<td>휴대폰</td>
-				<td><input type="text" name="hp"value="<%= ub.getHp()%>"/></td>
+				<td><input type="text" name="hp" value="<%= ub.getHp()%>"/></td>
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td><input type="text" name="age"value="<%= ub.getAge()%>"/></td>
+				<td><input type="text" name="age" value="<%= ub.getAge()%>"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">

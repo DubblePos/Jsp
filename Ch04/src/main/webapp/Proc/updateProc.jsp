@@ -12,6 +12,7 @@ String age  = request.getParameter("age");
 String host = "jdbc:mysql://54.180.160.240:3306/wks194510";
 String user = "wks194510";
 String pass = "1234";
+
 try{
 	// 1단계 - JDBC 드라이버 로드
 	Class.forName("com.mysql.jdbc.Driver");
