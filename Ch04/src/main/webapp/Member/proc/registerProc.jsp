@@ -3,11 +3,14 @@
 <%@page import="java.sql.DriverManager"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String uid  = request.getParameter("uid");
-	String name = request.getParameter("name");
-	String hp   = request.getParameter("hp");
-	String age  = request.getParameter("age");
+		request.setCharacterEncoding("UTF-8");
+
+		String uid = request.getParameter("uid");
+		String name = request.getParameter("name");
+		String hp  = request.getParameter("hp");
+		String pos   = request.getParameter("pos");
+		String dep   = request.getParameter("dep");
+
 	
 	// DB 정보
 	String host = "jdbc:mysql://54.180.160.240:3306/wks194510";
@@ -25,9 +28,8 @@
 		Statement stmt = conn.createStatement();
 		
 		// 4단계	
-		String sql = "INSERT INTO `USER1` VALUES ('"+uid+"', '"+name+"', '"+hp+"', "+age+");";
-	stmt.executeUpdate(sql);
-				
+		String sql = "INSERT INTO `MEMBER` VALUES ('"+uid+"', '"+name+"', '"+hp+"', '"+pos+"', "+dep+", NOW());";
+			   
 		stmt.executeUpdate(sql);	
 		
 		// 5단계		
@@ -40,6 +42,6 @@
 	}
 	
 	// 리다이렉트
-	response.sendRedirect("../4_2_Select.jsp");
+	response.sendRedirect("../list.jsp");
 	
 %>

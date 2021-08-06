@@ -24,9 +24,12 @@ try{
 	Statement stmt = conn.createStatement();
 	
 	// 4단계	- SQL 실행
-	String sql = "INSERT INTO `USER1` VALUES ('"+uid+"', '"+name+"', '"+hp+"', "+age+");";
-	stmt.executeUpdate(sql);
 	
+	String sql = "UPDATE `USER1` SET ";
+	sql += "`name`='"+name+"'," ;
+	sql += "`hp`='"+hp+"'," ;
+	sql += "`age`="+age+" " ;
+	sql += "where `uid` = '"+uid+"';" ;
 	// 5단계	- 결과처리(SELECT일 경우)
 	// 6단계	- 데이터베이스 종료
 	stmt.close();
