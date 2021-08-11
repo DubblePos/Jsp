@@ -20,9 +20,9 @@
     				success: function(data){
     					
     					if(data.result ==1){
-    						alert('이미 사용중인 아이디 입니다.');
+    						$('.resultId').css('color', 'red').text('이미 사용중인 아이디 입니다.');
     					}else{
-    						alert('사용 가능한 아이디 입니다.');
+    						$('.resultId').css('color', 'green').text('사용 가능한 아이디 입니다.');
     					}
     				}
     			});
