@@ -9,6 +9,7 @@
     <script>
     	$(document).ready(function(){
     		
+    		// 아이디 중복 체크
     		$('input[name=uid]').focusout(function(){
     			
     			var uid = $(this).val();
@@ -26,7 +27,10 @@
     					}
     				}
     			});
-    		});		
+    		});	
+    		// 닉네임 중복 체크
+    		// 이메일 중복 체크
+    		// 휴대폰 중복 체크
     	});
     
     </script>
