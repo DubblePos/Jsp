@@ -29,8 +29,62 @@
     			});
     		});	
     		// 닉네임 중복 체크
+    		$('input[name=nick]').focusout(function(){
+    			
+    			var nick = $(this).val();
+    			
+    			$.ajax({
+    				url: '/Jboard1/user/proc/checkNick.jsp?nick='+nick,
+    				type: 'get',
+    				dataType: 'json',
+    				success: function(data){
+    					
+    					if(data.result ==1){		
+    						$('.resultNick').css('color','red').text('이미 사용중인 닉네임 입니다.');
+    					}else{
+    						$('.resultNick').css('color','red').text('사용 가능한 닉네임 입니다.');
+    					}
+    				}
+    			});
+    		});
     		// 이메일 중복 체크
+    			$('input[name=email]').focusout(function(){
+    			
+    			var email = $(this).val();
+    			
+    			$.ajax({
+    				url: '/Jboard1/user/proc/checkEmail.jsp?email='+email,
+    				type: 'get',
+    				dataType: 'json',
+    				success: function(data){
+    					
+    					if(data.result ==1){		
+    						$('.resultEmail').css('color','red').text('이미 사용중인 이메일 입니다.');
+    					}else{
+    						$('.resultEmail').css('color','red').text('사용 가능한 이메일 입니다.');
+    					}
+    				}
+    			});
+    		});
     		// 휴대폰 중복 체크
+    			$('input[name=hp]').focusout(function(){
+        			
+        			var hp = $(this).val();
+        			
+        			$.ajax({
+        				url: '/Jboard1/user/proc/checkHp.jsp?hp='+hp,
+        				type: 'get',
+        				dataType: 'json',
+        				success: function(data){
+        					
+        					if(data.result ==1){		
+        						$('.resultHp').css('color','red').text('이미 사용중인 휴대폰번호 입니다.');
+        					}else{
+        						$('.resultHp').css('color','red').text('사용 가능한 휴대폰번호 입니다.');
+        					}
+        				}
+        			});
+        		});
     	});
     
     </script>
@@ -82,12 +136,14 @@
                         <td>E-Mail</td>
                         <td>
                             <input type="email" name="email" placeholder="이메일 입력"/>
+                            <span class="resultEmail"></span> 
                         </td>
                     </tr>
                     <tr>
                         <td>휴대폰</td>
                         <td>
                             <input type="text" name="hp" placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
+                             <span class="resultHp"></span> 
                         </td>
                     </tr>
                     <tr>
