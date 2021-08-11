@@ -6,8 +6,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// DB정보
-	String host = "jdbc:mysql://54.180.160.240:3306/chhak";
-	String user = "chhak";
+	String host = "jdbc:mysql://54.180.160.240:3306/wks194510";
+	String user = "wks194510";
 	String pass = "1234";
 	TermsBean tb = new TermsBean();
 	
@@ -44,7 +44,27 @@
 <head>
     <meta charset="UTF-8">
     <title>약관</title>
-    <link rel="stylesheet" href="/Jboard1/css/style.css"/>    
+    <link rel="stylesheet" href="/Jboard1/css/style.css"/>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+       	$(document).ready(function(){
+    	
+   			var btnNext = $('.terms > div > a:nth-child(2)');
+       		
+   			btnNext.click(function(){
+   				
+   				var isChecked1 = $('input[name=chk1]').is(':checked');
+   				var isChecked2 = $('input[name=chk2]').is(':checked');
+   				
+   				if(!isChecked1 || !isChecked2){
+   					alert('동의 체크를 하셔야 합니다.');	
+   					return false;
+   				}else{
+   					return true;
+   				}   				   								
+   			});	
+       	});
+    </script> 
 </head>
 <body>
     <div id="wrapper">

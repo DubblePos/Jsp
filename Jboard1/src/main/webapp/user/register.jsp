@@ -4,12 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/Jboard1/css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		
+    		$('input[name=uid]').focusout(function(){
+    			
+    			var uid = $(this).val();
+    			//서버로 요청하는 ajax 방식(부분적으로 요청하고 싶을때)
+    			$.ajax({
+    				url: '/Jboard1/user/proc/checkUid.jsp?uid='+uid,
+    				type: 'get',
+    				dataType: 'json',
+    				success: function(data){
+    					
+    					if(data.result ==1){
+    						alert('이미 사용중인 아이디 입니다.');
+    					}else{
+    						alert('사용 가능한 아이디 입니다.');
+    					}
+    				}
+    			});
+    		});		
+    	});
+    
+    </script>
 </head>
 <body>
     <div id="wrapper">
         <section id="user" class="register">
-            <form action="#" method="POST">
+            <form action="/Jboard1/user/proc/registerProc.jsp" method="POST">
                 <table border="1">
                     <caption>사이트 이용정보 입력</caption>
                     <tr>
@@ -79,7 +104,7 @@
                 </table>
 
                 <div>
-                    <a href="./login.html" class="btnCancel">취소</a>
+                    <a href="/Jboard1/user/login.jsp" class="btnCancel">취소</a>
                     <input type="submit"   class="btnJoin" value="회원가입"/>
                 </div>
 
