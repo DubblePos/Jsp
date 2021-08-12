@@ -1,3 +1,5 @@
+<%@page import="kr.co.jboard1.db.Sql"%>
+<%@page import="kr.co.jboard1.db.DBConfig"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -9,21 +11,16 @@
 	request.setCharacterEncoding("UTF-8");
 	String email = request.getParameter("email");
 	
-	// DB정보
-	String host = "jdbc:mysql://54.180.160.240:3306/wks194510";
-	String user = "wks194510";
-	String pass = "1234";
 	
 	int result = 0;
 	
 	try{
-		// 1단계
-		Class.forName("com.mysql.jdbc.Driver");
-		// 2단계
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		//1,2단계 통합
+		Connection conn = DBConfig.getInstance().getConnection();
+		
 		// 3단계
-		String sql = "SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=?;";
-		PreparedStatement psmt = conn.prepareStatement(sql);
+		
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_EMAIL);
 		psmt.setString(1, email);
 		
 		// 4단계
