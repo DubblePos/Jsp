@@ -1,16 +1,17 @@
 package kr.co.jboard1.bean;
 
+
 public class MemberBean {
-	
+
 	private String uid;
 	private String pass;
 	private String name;
 	private String nick;
 	private String email;
 	private String hp;
-	private int grade;
-	private String addr1;
+	private int    grade;
 	private String zip;
+	private String addr1;
 	private String addr2;
 	private String regip;
 	private String rdate;
@@ -57,17 +58,17 @@ public class MemberBean {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	public String getAddr1() {
-		return addr1;
-	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
-	}
 	public String getZip() {
 		return zip;
 	}
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
 	}
 	public String getAddr2() {
 		return addr2;
@@ -87,6 +88,4 @@ public class MemberBean {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	
-	
 }
