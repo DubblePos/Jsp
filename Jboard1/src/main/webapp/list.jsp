@@ -22,6 +22,9 @@
 	request.setCharacterEncoding("utf-8");
 	String pg = request.getParameter("pg");
 	
+	if(pg == null){
+		pg = "1";
+	}
 	
 	// 페이지 처리
 	int start = 0;
@@ -74,8 +77,8 @@
                     </tr>
                     <% for(ArticleBean article : articles){ %>
                     <tr>
-                        <td><%= pageStartNum-- %></td>
-                        <td><a href="./view.html"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                       <td><%= pageStartNum-- %></td>
+                        <td><a href="/Jboard1/view.jsp?seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                         <td><%= article.getNick() %></td>
                         <td><%= article.getRdate().substring(2, 10) %></td>
                         <td><%= article.getHit() %></td>
@@ -100,7 +103,7 @@
             </div>
 
             <!-- 글쓰기 버튼 -->
-            <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
+            <a href="/Jboard1/write.jsp?pg=<%= pg %>" class="btnWrite">글쓰기</a>
 
         </section>
     </div>    

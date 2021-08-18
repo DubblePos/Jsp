@@ -8,6 +8,9 @@
 		response.sendRedirect("/Jboard1/user/login.jsp?success=103");
 		return;
 	}
+	
+	request.setCharacterEncoding("UTF-8");
+	String pg = request.getParameter("pg");	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +43,7 @@
                         </tr>
                     </table>
                     <div>
-                        <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
+                        <a href="/Jboard1/list.jsp?pg=<%= pg %>" class="btnCancel">취소</a>
                         <input type="submit"  class="btnWrite" value="작성완료">
                     </div>
                 </form>
