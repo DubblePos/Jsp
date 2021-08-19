@@ -27,17 +27,17 @@ public class ArticleDao {
 		int total = 0;
 		
 		try{
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_TOTAL);
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			ResultSet rs = psmt.executeQuery();
-			// 5´Ü°è
+			// 5ï¿½Ü°ï¿½
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
-			// 6´Ü°è
+			// 6ï¿½Ü°ï¿½
 			rs.close();
 			psmt.close();
 			conn.close();
@@ -52,14 +52,14 @@ public class ArticleDao {
 		FileBean fb = null;
 		
 		try{
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();			
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
 			psmt.setString(1, seq);
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			ResultSet rs = psmt.executeQuery();
-			// 5´Ü°è					
+			// 5ï¿½Ü°ï¿½					
 			if(rs.next()) {
 				ab = new ArticleBean();
 				ab.setSeq(rs.getInt(1));
@@ -82,9 +82,9 @@ public class ArticleDao {
 				fb.setDownload(rs.getInt(16));
 				fb.setRdate(rs.getString(17));
 				
-				ab.setFb(fb); //  ab°´Ã¼¿¡ fb°´Ã¼¸¦  ½ï ³ÖÀ½
+				ab.setFb(fb); //  abï¿½ï¿½Ã¼ï¿½ï¿½ fbï¿½ï¿½Ã¼ï¿½ï¿½  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			}
-			// 6´Ü°è
+			// 6ï¿½Ü°ï¿½
 			rs.close();
 			psmt.close();
 			conn.close();
@@ -99,14 +99,14 @@ public class ArticleDao {
 		List<ArticleBean> articles = new ArrayList<>();
 		
 		try{
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLES);
 			psmt.setInt(1, start);
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			ResultSet rs = psmt.executeQuery();
-			// 5´Ü°è
+			// 5ï¿½Ü°ï¿½
 			while(rs.next()){
 				ArticleBean ab = new ArticleBean();
 				ab.setSeq(rs.getInt(1));
@@ -124,7 +124,7 @@ public class ArticleDao {
 				
 				articles.add(ab);
 			}
-			// 6´Ü°è
+			// 6ï¿½Ü°ï¿½
 			rs.close();
 			psmt.close();
 			conn.close();
@@ -140,14 +140,14 @@ public class ArticleDao {
 		List<ArticleBean> comments = new ArrayList<>();
 		
 		try{
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COMMENTS);
 			psmt.setString(1, seq);
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			ResultSet rs = psmt.executeQuery();
-			// 5´Ü°è
+			// 5ï¿½Ü°ï¿½
 			while(rs.next()){
 				ArticleBean ab = new ArticleBean();
 				ab.setSeq(rs.getInt(1));
@@ -165,7 +165,7 @@ public class ArticleDao {
 				
 				comments.add(ab);
 			}
-			// 6´Ü°è
+			// 6ï¿½Ü°ï¿½
 			rs.close();
 			psmt.close();
 			conn.close();
@@ -180,19 +180,19 @@ public class ArticleDao {
 	public void insertComment(ArticleBean ab)	{
 		
 		try {
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
 			psmt.setInt(1, ab.getParent());
 			psmt.setString(2, ab.getContent());
 			psmt.setString(3, ab.getUid());
 			psmt.setString(4, ab.getRegip());
 			
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			psmt.executeUpdate();
-			// 5´Ü°è
-			// 6´Ü°è
+			// 5ï¿½Ü°ï¿½
+			// 6ï¿½Ü°ï¿½
 			psmt.close();
 			conn.close();
 		}catch (Exception e) {
@@ -202,15 +202,15 @@ public class ArticleDao {
 	public void updateArticle() {}
 	public void updateArticleHit(String seq) {
 		try{
-			// 1,2´Ü°è
+			// 1,2ï¿½Ü°ï¿½
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3´Ü°è
+			// 3ï¿½Ü°ï¿½
 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_HIT);
 			psmt.setString(1, seq);
-			// 4´Ü°è
+			// 4ï¿½Ü°ï¿½
 			psmt.executeUpdate();
-			// 5´Ü°è
-			// 6´Ü°è
+			// 5ï¿½Ü°ï¿½
+			// 6ï¿½Ü°ï¿½
 			psmt.close();
 			conn.close();
 		}catch (Exception e) {
@@ -218,19 +218,19 @@ public class ArticleDao {
 		}
 	}
 	
-	public void updateCommentCount(String parent) {
+	public void updateCommentCount(String parent, int type) {
 		
 		try {
-		//1,2´Ü°è
+		
 			Connection conn = DBConfig.getInstance().getConnection();
-		//3´Ü°è
-			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT);
+			PreparedStatement psmt = null;
+			if(type > 0) {
+				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_PLUS);
+			}else {
+				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_MINUS);
+			}
 			psmt.setString(1, parent);
 			psmt.executeUpdate();
-			
-			// 5´Ü°è
-			// 6´Ü°è
-			
 			psmt.close();
 			conn.close();
 			
@@ -239,8 +239,42 @@ public class ArticleDao {
 		}
 		
 	}
-	public void deleteArticle() {}
 	
+	public int updateComment(String content, String seq) {
+		
+		int result = 0;
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, seq);
+			result = psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public void deleteArticle() {}
+	public void deleteComment(String seq) {
+		try{
+			// 1,2ë‹¨ê³„
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3ë‹¨ê³„
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_COMMENT);
+			psmt.setString(1, seq);
+			psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+			// 4ë‹¨ê³„
+			// 5ë‹¨ê³„
+			// 6ë‹¨ê³„
+		}catch(Exception e){
+				e.printStackTrace();
+			}
+	}
 	
 	
 }
