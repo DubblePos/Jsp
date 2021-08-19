@@ -46,9 +46,9 @@
     		// 댓글 수정
     		$('.btnCommentModify').click(function(){
     			
+    			var tag = $(this);
     			var mode = $(this).text(); //태그의 내용(삭제)을 구하는
-    			   			
-    			var textarea = $(this).parent().prev()
+       			var textarea = $(this).parent().prev();
     			
     			if(mode == '수정'){
     				// 수정모드   				
@@ -75,13 +75,18 @@
     					}; 
     				
     				// 서버에 수정 요청 전송
-    				$.ajax({
+    				$.ajax({ // 여기 내부에서는 this 사용못함 객체안에 객체사용불가!
     					url: '/Jboard1/proc/updateComment.jsp', //get 이라면 jsp뒤에 ? 
     					type: 'post', // 길이제한이없는 post전송
     					data: jsonData, // 서버로 전송하는 데이터(JSON) 지정
     					dataType: 'json', // 서버로부터 전달되는 데이터 종류
     					success: function(data){
-    						alert(data);
+    						if(data.result == 1){
+    							alert('댓글 수정이 성공하였습니다.');
+    							escapeModify(tag);
+    						}else{
+    							alert('댓글 수정이 실패하였습니다.');
+    						}
     					}    					
     				});    				
     			}
@@ -91,22 +96,29 @@
     		// 댓글 수정 취소 //클래스 식별 .
     		$('.btnCommentCancel').click(function(e) {
 				e.preventDefault();  //return false; 와 같음 function()에 인자는 없음
-				
-    			$(this).prev().text('수정'); // 내가 클릭하는 취소의 형
-    			$(this).prev().prev().css('display', 'inline'); //밑에 없다면 다시 처음으로... = /prev().prev()
-    			$(this).css('display', 'none'); // 취소버튼은 사라져야됨
+				escapeModify($(this));
+    			
+			});
+    		
+    		// 댓글 수정 모드 해제
+    		function escapeModify(tag){
+    			
+    			tag.prev().text('수정'); // 내가 클릭하는 취소의 형
+    			tag.prev().prev().css('display', 'inline'); //밑에 없다면 다시 처음으로... = /prev().prev()
+    			tag.css('display', 'none'); // 취소버튼은 사라져야됨
     			
     			//div 형 textarea 다시 수정못하게 
-    			
-    			var textarea = $(this).parent().prev();
+    			var textarea = tag.parent().prev();
     			
     			textarea.val(content);
-    			textarea.attr('readonly', true).focus();
+    			textarea.attr('readonly', true);
     			textarea.css({
     				'background':'transparent',
     				'outline' : 'none'
-    			});    			    		
-			});
+    			});    			    
+    		}
+    		
+    		
     	});
     
     </script>

@@ -249,7 +249,8 @@ public class ArticleDao {
 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT);
 			psmt.setString(1, content);
 			psmt.setString(2, seq);
-			result = psmt.executeUpdate();
+			// 업데이트나 딜리트나 인설트는 수정만하고 데이터는 가져올필요없기 때문에 리다이렉트안해도됨
+			result = psmt.executeUpdate(); 
 			psmt.close();
 			conn.close();
 		}catch (Exception e) {
