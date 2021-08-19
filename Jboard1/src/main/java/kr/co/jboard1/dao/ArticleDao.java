@@ -217,6 +217,28 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateCommentCount(String parent) {
+		
+		try {
+		//1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+		//3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT);
+			psmt.setString(1, parent);
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			
+			psmt.close();
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public void deleteArticle() {}
 	
 	

@@ -8,8 +8,6 @@
 	String content =  request.getParameter("content");
 	String uid =  request.getParameter("uid");
 	String regip =  request.getRemoteAddr();
-
-	
 	
 	ArticleBean ab = new ArticleBean();
 	ab.setParent(parent);
@@ -20,8 +18,9 @@
 	// 댓글 등록하기
 	 ArticleDao.getInstance().insertComment(ab);
 	
+	// 댓글 카운트 업데이트
+	ArticleDao.getInstance().updateCommentCount(parent);
+	
 	// 리다이렉트
 	response.sendRedirect("/Jboard1/view.jsp?seq="+parent);
-
-
 %>

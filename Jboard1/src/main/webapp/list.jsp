@@ -31,23 +31,24 @@
 	int currentPage = Integer.parseInt(pg);
 	int total = ArticleDao.getInstance().selectCountTotal();
 	int lastPageNum = 0;
-		
+	
 	if(total % 10 == 0){
 		lastPageNum = total / 10;
 	}else{
 		lastPageNum = total / 10 + 1;
-	}
+	}	
 	start = (currentPage - 1) * 10;
 	
 	int pageStartNum = total - start;
-	int groupCurrent = (int)Math.ceil(currentPage / 10.0); //Math.ceil : 올림 -> 정수만들기
-	int groupStart = (groupCurrent -1) * 10 + 1;
+	int groupCurrent = (int)Math.ceil(currentPage / 10.0);
+	int groupStart = (groupCurrent - 1) * 10 + 1;
 	int groupEnd = groupCurrent * 10;
 	
 	if(groupEnd > lastPageNum){
 		groupEnd = lastPageNum;
 	}
 	
+	// 게시물 가져오기
 	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start);
 	
 %>
@@ -77,7 +78,7 @@
                     </tr>
                     <% for(ArticleBean article : articles){ %>
                     <tr>
-                       <td><%= pageStartNum-- %></td>
+                        <td><%= pageStartNum-- %></td>
                         <td><a href="/Jboard1/view.jsp?seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                         <td><%= article.getNick() %></td>
                         <td><%= article.getRdate().substring(2, 10) %></td>
@@ -89,12 +90,13 @@
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
-            	<% if(groupStart > 1){ %>
+                
+                <% if(groupStart > 1){ %>
                 	<a href="/Jboard1/list.jsp?pg=<%= groupStart - 1 %>" class="prev">이전</a>
                 <% } %>
                 
                 <% for(int i=groupStart ; i<=groupEnd ; i++){ %>
-                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current" : "" %>"><%= i %></a>
+                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current":"" %>"><%= i %></a>
                 <% } %>
                 
                 <% if(groupEnd < lastPageNum){ %>

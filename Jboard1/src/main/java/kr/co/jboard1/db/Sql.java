@@ -23,6 +23,7 @@ public class Sql {
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(`hp`)    FROM `Jboard_member` WHERE `hp`=?;";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=?;";
 	
+
 	// 게시판 관련
 	
 	
@@ -72,7 +73,7 @@ public class Sql {
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `Jboard_article` SET `hit` = `hit` + 1 "
 												  + "WHERE `seq`=?;";
 	
-			
+	public static final String UPDATE_COMMENT_COUNT = "UPDATE `Jboard_article` SET `comment` = `comment` + 1 WHERE `seq`=?;";
 	
 	
 }
