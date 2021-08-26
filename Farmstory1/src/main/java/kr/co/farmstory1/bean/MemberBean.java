@@ -1,6 +1,5 @@
 package kr.co.farmstory1.bean;
 
-
 public class MemberBean {
 
 	private String uid;

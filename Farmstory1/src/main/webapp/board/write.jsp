@@ -14,6 +14,7 @@
         <form action="/Farmstory1/board/proc/writeProc.jsp" method="post">
         	<input type="hidden" name="cate" value="<%= cate %>" />
         	<input type="hidden" name="uid" value="<%= uid %>" />
+        	<input type="hidden" name="uri" value="<%= uri %>" />
             <table>
                 <tr>
                     <td>제목</td>

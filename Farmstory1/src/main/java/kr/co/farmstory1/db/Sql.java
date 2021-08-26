@@ -28,6 +28,11 @@ public class Sql {
 	
 	
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`seq`) FROM `Jboard_article` WHERE `parent`=0;";
+	
+	public static final String SELECT_LATEST = "SELECT `seq`,`title`,`rdate` FROM `Jboard_article` "
+												+ "WHERE `cate`=? AND `parent`=0 " 
+												+ "ORDER BY `seq` DESC LIMIT 5";
+	
 	public static final String SELECT_ARTICLE = "SELECT *FROM `Jboard_article` AS a "
 												+ "LEFT JOIN `Jboard_file` AS b "
 												+ "ON a.seq = b.parent "
