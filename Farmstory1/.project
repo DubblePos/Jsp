@@ -3,6 +3,9 @@
 	<name>Farmstory1</name>
 	<comment></comment>
 	<projects>
+		<project>mysql-connector-java-5.1.49</project>
+		<project>cos-2020.4</project>
+		<project>gson-2.8.7</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

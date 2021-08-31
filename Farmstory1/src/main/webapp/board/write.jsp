@@ -1,3 +1,4 @@
+<%@ page import="kr.co.farmstory1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
 	String uid = request.getParameter("uid");
@@ -11,7 +12,7 @@
 <section id="board" class="write">
     <h3>글쓰기</h3>
     <article>
-        <form action="/Farmstory1/board/proc/writeProc.jsp" method="post">
+        <form action="/Farmstory1/board/proc/writeProc.jsp" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="cate" value="<%= cate %>" />
         	<input type="hidden" name="uid" value="<%= uid %>" />
         	<input type="hidden" name="uri" value="<%= uri %>" />
