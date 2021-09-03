@@ -36,7 +36,7 @@
                 <% }else{ %>
                 	<a href="/Farmstory2/user/logout.jsp">로그아웃 |</a>
                 <% } %>
-                <a href="/Farmstory2/community/qna.jsp">고객센터</a>
+                <a href="/Farmstory2/board/list.jsp?group=Community&cate=qna">고객센터</a>
             </p>
             <img src="/Farmstory2/img/head_txt_img.png" alt="3만원이상 무료배송, 팜카드 10%적립"/>
             <ul class="gnb">
