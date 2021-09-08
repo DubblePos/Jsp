@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -14,9 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.CommonService;
-import model.HelloService;
 
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -83,12 +80,19 @@ public class MainController extends HttpServlet {
 		// Map에서 Service 객체 꺼내기
 		CommonService instance = (CommonService) instances.get(key);
 		
-		// Service 객체 실행 후 View 정보 받기
-		String view = instance.requestProc(req, resp);
+		// Service 객체 실행 후 결과정보 받기
+		String result = instance.requestProc(req, resp);
 		
-		// 해당 View로 forward 하기
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, resp);
+		if(result.startsWith("redirect:")) {
+			// 리다이렉트
+			String redirecUrl = result.substring(9);
+			resp.sendRedirect(path+redirecUrl);
+			
+		}else {
+			// 해당 View로 forward 하기
+			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
+			dispatcher.forward(req, resp);
+		}
 	}
 	
 }
