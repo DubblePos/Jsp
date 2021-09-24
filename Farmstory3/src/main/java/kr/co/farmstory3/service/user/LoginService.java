@@ -27,14 +27,12 @@ public class LoginService implements CommonService {
 			MemberVo vo = MemberDao.getInstance().selectMember(uid, pass);
 			
 			if(vo != null) {
-				// ȸ�� ���� ��� -> ����� ������ü �������� �� ����Ʈ �����̷�Ʈ 
 				HttpSession sess = req.getSession();
 				sess.setAttribute("sessMember", vo);
 				
-				return "redirect:/list.do";
+				return "redirect:/";
 			}else {
-				// ȸ�� �ƴ� ��� -> �ٽ� �α��������� �����̷�Ʈ
-				return "redirect:/user/login.do?success=100";
+				return "redirect:/member/login.do?success=100";
 			}
 		}
 	}

@@ -1,6 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
+	<script>
+	    	var success = ${requestScope.success};
+	    
+	    	if(success == 100){
+	    		alert('일치하는 회원이 없습니다.\n아이디, 비밀번호를 다시 확인해 주세요.');
+	    	}else if(success == 101){
+	    		alert('정상적으로 로그아웃이 되었습니다.');
+	    	}else if(success == 102){
+	    		alert('먼저 로그인을 하셔야 합니다.');
+	    	}else if(success == 103){
+	    		alert('글 작성을 하실려면 로그인을 하셔야 합니다.');
+	    	}
+	    </script>
         <section id="user" class="login">
             <form action="/Farmstory3/member/login.do" method="post">
                 <table border="0">

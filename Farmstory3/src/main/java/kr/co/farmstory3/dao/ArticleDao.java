@@ -23,11 +23,12 @@ public class ArticleDao {
 		try {
 			Connection conn = DBConfig.getInstance().getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
-			psmt.setString(1, vo.getTitle());
-			psmt.setString(2, vo.getContent());
-			psmt.setInt(3, vo.getFile());
-			psmt.setString(4, vo.getUid());
-			psmt.setString(5, vo.getRegip());
+			psmt.setString(1, vo.getCate());
+			psmt.setString(2, vo.getTitle());
+			psmt.setString(3, vo.getContent());
+			psmt.setInt(4, vo.getFile());
+			psmt.setString(5, vo.getUid());
+			psmt.setString(6, vo.getRegip());
 			
 			// executeUpdate�� ���ϰ��� �����???
 			int result = psmt.executeUpdate();
@@ -72,6 +73,48 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public  List<ArticleVo> selectCroptalk(String cate) {
+		
+		List<ArticleVo> articles = new ArrayList<>();
+		
+		
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_CROPTALK);
+			psmt.setString(1, cate);
+			
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleVo vo = new ArticleVo();
+				vo.setSeq(rs.getInt(1));
+				vo.setParent(rs.getInt(2));
+				vo.setComment(rs.getInt(3));
+				vo.setCate(rs.getString(4));
+				vo.setTitle(rs.getString(5));
+				vo.setContent(rs.getString(6));
+				vo.setFile(rs.getInt(7));
+				vo.setHit(rs.getInt(8));
+				vo.setUid(rs.getString(9));
+				vo.setRegip(rs.getString(10));
+				vo.setRdate(rs.getString(11).substring(2, 10));
+				
+				articles.add(vo);
+				
+			}
+			
+			rs.close();
+			conn.close();
+			psmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return articles;
+	}
+	
 	
 	public int selectCountTotal() {
 		int total = 0;
@@ -181,14 +224,16 @@ public class ArticleDao {
 		
 		return vo;
 	}
-	public List<ArticleVo> selectArticles(int start) {
+	public List<ArticleVo> selectArticles(int start, String cate) {
 		
 		List<ArticleVo> articles = new ArrayList<>();
 		
 		try {
 			Connection conn = DBConfig.getInstance().getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLES);
-			psmt.setInt(1, start);
+			psmt.setString(1, cate);
+			psmt.setInt(2, start);
+			
 			ResultSet rs = psmt.executeQuery();
 			
 			while(rs.next()) {

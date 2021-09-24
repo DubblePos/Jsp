@@ -17,11 +17,9 @@ public class CheckNickService implements CommonService {
 		
 		int count = MemberDao.getInstance().selectCountUid(uid);
 		
-		// Json ������ ����
 		JsonObject json = new JsonObject();
 		json.addProperty("result", count);		
 				
-		// Json ������ ���ڿ� ���
 		return "json:"+json.toString();
 	}
 

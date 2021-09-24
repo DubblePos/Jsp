@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
 	<section class="cate2">
 	    <aside>
 	        <img src="../img/sub_aside_cate2_tit.png" alt="장보기"/>
@@ -23,4 +23,4 @@
 	
 	    </article>
 	</section>
-<%@ include file="./_footer.jsp" %>
+<%@ include file="../_footer.jsp" %>

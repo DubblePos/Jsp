@@ -10,7 +10,7 @@
                 <li class="${cate == 'notice' ? 'on' : 'off'}"><a href="/Farmstory3/board/list.do?group=Community&cate=notice">공지사항</a></li>
                 <li class="${cate == 'menu' ? 'on' : 'off'}"><a href="/Farmstory3/board/list.do?group=Community&cate=menu">오늘의식단</a></li>
                 <li class="${cate == 'chef' ? 'on' : 'off'}"><a href="/Farmstory3/board/list.do?group=Community&cate=chef">나도요리사</a></li>
-                <li class="${cate == 'qna' ? 'on' : 'off'}">><a href="/Farmstory3/board/list.do?group=Community&cate=qna">고객문의</a></li>
+                <li class="${cate == 'qna' ? 'on' : 'off'}"><a href="/Farmstory3/board/list.do?group=Community&cate=qna">고객문의</a></li>
                 <li class="${cate == 'faq' ? 'on' : 'off'}"><a href="/Farmstory3/board/list.do?group=Community&cate=faq">자주묻는 질문</a></li>
             </ul>
 

@@ -40,7 +40,7 @@ public class RegisterService implements CommonService {
 			
 			MemberDao.getInstance().insertMember(vo);
 			
-			return "redirect:/user/login.do";
+			return "redirect:/member/login.do";
 		}
 	}
 }

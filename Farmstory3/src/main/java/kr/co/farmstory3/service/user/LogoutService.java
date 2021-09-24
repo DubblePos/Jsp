@@ -13,7 +13,6 @@ public class LogoutService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
 		
-		// ���ǿ��� ����� ������ü ����
 		HttpSession sess = req.getSession();
 		sess.invalidate();
 		

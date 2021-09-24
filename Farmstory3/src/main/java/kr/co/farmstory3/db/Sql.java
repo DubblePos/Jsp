@@ -23,6 +23,10 @@ public class Sql {
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(`hp`)    FROM `Jboard_member` WHERE `hp`=?;";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=?;";
 	
+	public static final String SELECT_CROPTALK = "SELECT * FROM `Jboard_article` "
+												+ "WHERE `cate`=? "
+												+ "ORDER BY `seq` DESC "
+												+ "LIMIT 5;";
 	
 	// �Խ��� ����
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`seq`) FROM `Jboard_article` WHERE `parent`=0;";
@@ -34,7 +38,7 @@ public class Sql {
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.nick FROM `Jboard_article` AS a "
 												+ "JOIN `Jboard_member` AS b "
 												+ "ON a.uid = b.uid "
-												+ "WHERE `parent`=0 "
+												+ "WHERE `parent`=0 AND `cate`=?"
 												+ "ORDER BY `seq` DESC "
 												+ "LIMIT ?, 10;";
 	
@@ -50,6 +54,7 @@ public class Sql {
 	public static final String SELECT_FILE = "SELECT * FROM `Jboard_file` WHERE `fseq`=?";
 	
 	public static final String INSERT_ARTICLE = "INSERT INTO `Jboard_article` SET "
+												+ "`cate`=?,"
 												+ "`title`=?,"
 												+ "`content`=?,"
 												+ "`file`=?,"
