@@ -6,9 +6,13 @@ Jsp 수업예제
 
 ### Ch02.JSP Scriptlet, 제어문 실습
 > JSP Scriptlet 실습하기
+> 
 > JSP 조건문 실습하기
+> 
 > JSP 반복문 실습하기
+> 
 > JSP Class 실습하기
+> 
 > JSP Include 실습하기
 
 ### Ch03.JSP 내장객체 실습
